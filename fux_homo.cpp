@@ -68,31 +68,31 @@ void fux_homo :: srcMess (int argc, t_atom*argv) {	// FUN
 	ofPoint src[4];
 	ofPoint dest[4];
 	
-	src[0].x = quad_src[0];
-	src[0].y = quad_src[1];
+	src[0].x = -2;//quad_src[0];
+	src[0].y = -2;//quad_src[1];
 	
-	src[1].x = quad_src[2];
-	src[1].y = quad_src[3];
+	src[1].x = 2;//quad_src[2];
+	src[1].y = -2;//quad_src[3];
 	
-	src[2].x = quad_src[4];
-	src[2].y = quad_src[5];
+	src[2].x = 2;//quad_src[4];
+	src[2].y = 2;//quad_src[5];
 	
-	src[3].x = quad_src[6];
-	src[3].y = quad_src[7];
+	src[3].x = -2;//quad_src[6];
+	src[3].y = 2;//quad_src[7];
 	
 	//dest
 	
-	dest[0].x = quad_src[8];
-	dest[0].y = quad_src[9];
+	dest[0].x = quad_src[0];
+	dest[0].y = quad_src[1];
 	
-	dest[1].x = quad_src[10];
-	dest[1].y = quad_src[11];
+	dest[1].x = quad_src[2];
+	dest[1].y = quad_src[3];
 	
-	dest[2].x = quad_src[12];
-	dest[2].y = quad_src[13];
+	dest[2].x = quad_src[4];
+	dest[2].y = quad_src[5];
 	
-	dest[3].x = quad_src[14];
-	dest[3].y = quad_src[15];
+	dest[3].x = quad_src[6];
+	dest[3].y = quad_src[7];
 	
 	
 	float matrix_homo[16];
@@ -102,7 +102,7 @@ void fux_homo :: srcMess (int argc, t_atom*argv) {	// FUN
 	
 	for (i=0;i<16;i++) {
 	  m_matrix[i] = (GLfloat) matrix_homo[i];
-	  post("matrix[%i] = %f", i, matrix_homo[i]);
+	//  post("matrix[%i] = %f", i, matrix_homo[i]);
 	}
 
 	setModified();
