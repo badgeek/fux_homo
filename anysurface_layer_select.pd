@@ -1,0 +1,18 @@
+#N canvas 225 96 677 400 10;
+#X obj 110 132 cnv 15 1 1 empty empty LAYER_SELECTION 0 0 0 14 -262144
+-66577 0;
+#X obj 108 143 hradio 30 1 0 12 empty empty empty 0 -8 0 10 -228856
+-1 -1 0;
+#X obj 227 12 r nds_id;
+#X obj 47 203 s active;
+#X floatatom 435 123 5 0 0 0 Layers_Available: - -;
+#X obj 201 54 mod \$1;
+#X obj 423 32 loadbang;
+#X obj 433 69 i \$1;
+#X connect 1 0 3 0;
+#X connect 2 0 5 0;
+#X connect 4 0 5 1;
+#X connect 5 0 1 0;
+#X connect 6 0 7 0;
+#X connect 7 0 4 0;
+#X coords 0 -1 1 1 380 80 1 100 100;

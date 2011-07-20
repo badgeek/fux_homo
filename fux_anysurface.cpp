@@ -10,18 +10,18 @@
 //
 ////////////////////////////////////////////////////////
 
-#include "fux_homo.h"
+#include "fux_anysurface.h"
 
-CPPEXTERN_NEW_WITH_ONE_ARG ( fux_homo , t_floatarg, A_DEFFLOAT )
+CPPEXTERN_NEW_WITH_ONE_ARG ( fux_anysurface , t_floatarg, A_DEFFLOAT )
 
 /////////////////////////////////////////////////////////
 //
-// fux_homo
+// fux_anysurface
 //
 /////////////////////////////////////////////////////////
 // Constructor
 //
-fux_homo :: fux_homo	(t_floatarg arg0=0)
+fux_anysurface :: fux_anysurface	(t_floatarg arg0=0)
 {
 	src_inlet = inlet_new(this->x_obj, &this->x_obj->ob_pd, &s_float, gensym("src"));
 	//dest_inlet = inlet_new(this->x_obj, &this->x_obj->ob_pd, &s_float, gensym("dest"));	
@@ -29,14 +29,14 @@ fux_homo :: fux_homo	(t_floatarg arg0=0)
 /////////////////////////////////////////////////////////
 // Destructor
 //
-fux_homo :: ~fux_homo () {
+fux_anysurface :: ~fux_anysurface () {
 	inlet_free(src_inlet);
 	//inlet_free(dest_inlet);
 }
 
 //////////////////
 // extension check
-bool fux_homo :: isRunnable(void) {
+bool fux_anysurface :: isRunnable(void) {
   if(GLEW_VERSION_1_1)return true;
   error("your system does not support OpenGL-1.1");
   return false;
@@ -46,14 +46,14 @@ bool fux_homo :: isRunnable(void) {
 /////////////////////////////////////////////////////////
 // Render
 //
-void fux_homo :: render(GemState *state) {
+void fux_anysurface :: render(GemState *state) {
 	glMultMatrixf (m_matrix);
 }
 
 /////////////////////////////////////////////////////////
 // Variables
 //
-void fux_homo :: srcMess (int argc, t_atom*argv) {	// FUN
+void fux_anysurface :: srcMess (int argc, t_atom*argv) {	// FUN
 	if(argc!=16){
 		error("need 16 src + dest xy coordinate");
 		return;
@@ -110,7 +110,7 @@ void fux_homo :: srcMess (int argc, t_atom*argv) {	// FUN
 /////////////////////////////////////////////////////////
 // Variables
 //
-void fux_homo :: destMess (int argc, t_atom*argv) {	// FUN
+void fux_anysurface :: destMess (int argc, t_atom*argv) {	// FUN
 	if(argc!=8){
 		error("need 8 xy coordinate");
 		return;
@@ -125,7 +125,7 @@ void fux_homo :: destMess (int argc, t_atom*argv) {	// FUN
 // homography functions
 //
 
-void fux_homo :: gaussian_elimination(float *input, int n)
+void fux_anysurface :: gaussian_elimination(float *input, int n)
 {
     // ported to c from pseudocode in
     // http://en.wikipedia.org/wiki/Gaussian_elimination
@@ -190,7 +190,7 @@ void fux_homo :: gaussian_elimination(float *input, int n)
     }
 }
 
-void fux_homo :: findHomography(ofPoint src[4], ofPoint dst[4], float homography[16])
+void fux_anysurface :: findHomography(ofPoint src[4], ofPoint dst[4], float homography[16])
 {
 
     // create the equation system to be solved
@@ -245,15 +245,15 @@ void fux_homo :: findHomography(ofPoint src[4], ofPoint dst[4], float homography
 // static member functions
 //
 
-void fux_homo :: obj_setupCallback(t_class *classPtr) {
-	 class_addmethod(classPtr, (t_method)&fux_homo::srcMessCallback, gensym("src"), A_GIMME, A_NULL);
-	 //class_addmethod(classPtr, (t_method)&fux_homo::destMessCallback, gensym("dest"), A_GIMME, A_NULL);
+void fux_anysurface :: obj_setupCallback(t_class *classPtr) {
+	 class_addmethod(classPtr, (t_method)&fux_anysurface::srcMessCallback, gensym("src"), A_GIMME, A_NULL);
+	 //class_addmethod(classPtr, (t_method)&fux_anysurface::destMessCallback, gensym("dest"), A_GIMME, A_NULL);
 }
 
-void fux_homo :: srcMessCallback (void* data, t_symbol*,int argc, t_atom*argv){
+void fux_anysurface :: srcMessCallback (void* data, t_symbol*,int argc, t_atom*argv){
 	GetMyClass(data)->srcMess( argc, argv);
 }
 
-void fux_homo :: destMessCallback (void* data, t_symbol*,int argc, t_atom*argv){
+void fux_anysurface :: destMessCallback (void* data, t_symbol*,int argc, t_atom*argv){
 	GetMyClass(data)->destMess( argc, argv);
 }

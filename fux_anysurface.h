@@ -16,7 +16,7 @@
 
 /*
  CLASS
-	fux_homo
+	fux_anysurface
  KEYWORDS
 	openGL	0
  DESCRIPTION
@@ -30,19 +30,19 @@ struct ofPoint
 	float y;
 };
 
-class GEM_EXTERN fux_homo : public GemGLBase
+class GEM_EXTERN fux_anysurface : public GemGLBase
 {
-	CPPEXTERN_HEADER(fux_homo, GemGLBase)
+	CPPEXTERN_HEADER(fux_anysurface, GemGLBase)
 
 	public:
 	  // Constructor
-	  fux_homo (t_float);	// CON
+	  fux_anysurface (t_float);	// CON
 	  void findHomography(ofPoint src[4], ofPoint dst[4], float homography[16]);
 	  void gaussian_elimination(float *input, int n);
 	
 	protected:
 	  // Destructor
-	  virtual ~fux_homo ();
+	  virtual ~fux_anysurface ();
       // check extensions
       virtual bool isRunnable(void);
 

@@ -26,7 +26,7 @@ endif
 
 .SUFFIXES = $(EXTENSION)
 
-SOURCES = fux_homo
+SOURCES = fux_anysurface
 
 all:
 	g++ $(LDFLAGS) $(INCLUDES) $(CPPFLAGS) -o $(SOURCES).o -c $(SOURCES).cpp
