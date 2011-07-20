@@ -1,4 +1,4 @@
-#N canvas 77 22 1274 525 10;
+#N canvas 136 198 1274 525 10;
 #X obj 722 -53 gemwin;
 #X msg 722 -96 create \, 1;
 #X msg 722 -76 dimen 800 800;
