@@ -1,0 +1,31 @@
+#N canvas 638 296 450 300 10;
+#X obj 100 100 cnv 15 140 160 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 45 173 lop~;
+#X obj 45 150 hip~;
+#X obj 45 196 env~;
+#X floatatom 45 219 0 0 0 0 - - -;
+#X floatatom 148 143 5 0 0 0 - - -;
+#X floatatom 149 195 5 0 0 0 - - -;
+#X obj 116 120 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 139 117 cnv 15 100 20 empty empty Highpass 10 10 0 14 -233017
+-66577 0;
+#X obj 139 171 cnv 15 100 20 empty empty Lowpass 10 10 0 14 -233017
+-66577 0;
+#X obj 43 104 r~ adc;
+#X obj 116 276 outlet;
+#X obj 38 129 spigot~;
+#X obj 149 226 tgl 15 0 empty empty ON/OFF 17 7 0 10 -262144 -1 -1
+0 1;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;
+#X connect 5 0 2 1;
+#X connect 6 0 1 1;
+#X connect 7 0 11 0;
+#X connect 10 0 12 0;
+#X connect 12 1 2 0;
+#X connect 13 0 12 1;
+#X coords 0 -1 1 1 140 160 1 100 100;
