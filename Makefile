@@ -29,7 +29,7 @@ endif
 SOURCES = fux_anysurface
 
 all:
-	g++ $(LDFLAGS) $(INCLUDES) $(CPPFLAGS) -o fux_anysurface.o -c fux_anysurface.cpp
+	g++ $(LDFLAGS) $(INCLUDES) $(CPPFLAGS) -o $(SOURCES).o -c $(SOURCES).cpp
 	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
 	rm -fr ./*.o
 deploy:
